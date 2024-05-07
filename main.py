@@ -37,6 +37,13 @@ for op in operations:
 
 op_symbol = input("Pick an operation from the line above: ")
 action = operations[op_symbol]
-answer = action(num1, num2)
+first_answer = action(num1, num2)
 
-print(f"{num1} {op_symbol} {num2} = {answer}")
+print(f"{num1} {op_symbol} {num2} = {first_answer}")
+
+op_symbol = input("Pick another operation: ")
+num3 = int(input("What's the next number?: "))
+action = operations[op_symbol]
+sec_answer = action(first_answer, num3)
+
+print(f"{first_answer} {op_symbol} {num3} = {sec_answer}")
