@@ -1,8 +1,4 @@
-
-
-# Calculator
-
-
+from art import logo
 
 # Add
 def add(n1, n2):
@@ -45,24 +41,28 @@ def cont_calculating(previous, op_symbol, num3):
     return(sec_answer)
 
 def main():
+    print(logo)
     calculating = True
     previous_answer = 0
     sec_answer = 0
-    num1 = int(input("What's the first number?: "))
+    num1 = float(input("What's the first number?: "))
     for op in operations:
         print(op)
-    op_symbol = input("Pick an operation from the line above: ")
-    num2 = int(input("What's the second number?: "))
+    op_symbol = input("Pick an operation: ")
+    num2 = float(input("What's the next number?: "))
     previous_answer = first(num1, op_symbol, num2)
     print(f"{num1} {op_symbol} {num2} = {previous_answer}")
 
     while calculating:
-        ask = input(f"Type 'y' to continue calculating with {previous_answer}, or type 'n' to exit.: ")
+        ask = input(f"Type 'y' to continue calculating with {previous_answer}, type 'x' to start a new calculation, or type 'n' to exit.: ").lower()
         if ask == "n":
             calculating = False
+        elif ask == 'x':
+            calculating = False
+            main()
         else:
-            op_symbol = input("Pick another operation: ")
-            num3 = int(input("What's the next number?: "))
+            op_symbol = input("Pick an operation: ")
+            num3 = float(input("What's the next number?: "))
             sec_answer = cont_calculating(previous_answer, op_symbol, num3)
             print(f"{previous_answer} {op_symbol} {num3} = {sec_answer}")
             previous_answer = sec_answer
